@@ -55,9 +55,8 @@ string libE8FDC292_gf_ComputeChecksum (bank lp_bank) {
 
     // Implementation
     lib132C67C5_gf_InitializeHashInput();
-    lib132C67C5_gf_AddStringToHashInput("");
-    lib132C67C5_gf_AddStringToHashInput("");
-    lib132C67C5_gf_AddStringToHashInput("");
+    lib132C67C5_gf_AddStringToHashInput("magic");
+    lib132C67C5_gf_AddStringToHashInput("map name");
     auto26EEA46E_ae = (BankSectionCount(lp_bank) - 1);
     lv_section_number = 0;
     for ( ; ( (auto26EEA46E_ai >= 0 && lv_section_number <= auto26EEA46E_ae) || (auto26EEA46E_ai < 0 && lv_section_number >= auto26EEA46E_ae) ) ; lv_section_number += auto26EEA46E_ai ) {

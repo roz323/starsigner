@@ -1334,7 +1334,6 @@
             <FunctionCall Type="FunctionCall" Library="E8FDC292" Id="CA5B6AC3"/>
             <FunctionCall Type="FunctionCall" Library="E8FDC292" Id="89BBD963"/>
             <FunctionCall Type="FunctionCall" Library="E8FDC292" Id="BE8554A6"/>
-            <FunctionCall Type="FunctionCall" Library="E8FDC292" Id="F5434070"/>
             <FunctionCall Type="FunctionCall" Library="E8FDC292" Id="26EEA46E"/>
             <FunctionCall Type="FunctionCall" Library="E8FDC292" Id="60EE963A"/>
         </Element>
@@ -1404,6 +1403,7 @@
         </Element>
         <Element Type="Param" Id="BFAE9EBA">
             <ParameterDef Type="ParamDef" Library="132C67C5" Id="DEBD4FDD"/>
+            <Value>magic</Value>
             <ValueType Type="string"/>
         </Element>
         <Element Type="FunctionCall" Id="BE8554A6">
@@ -1412,14 +1412,7 @@
         </Element>
         <Element Type="Param" Id="4CAF878E">
             <ParameterDef Type="ParamDef" Library="132C67C5" Id="DEBD4FDD"/>
-            <ValueType Type="string"/>
-        </Element>
-        <Element Type="FunctionCall" Id="F5434070">
-            <FunctionDef Type="FunctionDef" Library="132C67C5" Id="826A04EB"/>
-            <Parameter Type="Param" Library="E8FDC292" Id="BC653DF3"/>
-        </Element>
-        <Element Type="Param" Id="BC653DF3">
-            <ParameterDef Type="ParamDef" Library="132C67C5" Id="DEBD4FDD"/>
+            <Value>map name</Value>
             <ValueType Type="string"/>
         </Element>
         <Element Type="FunctionCall" Id="26EEA46E">
