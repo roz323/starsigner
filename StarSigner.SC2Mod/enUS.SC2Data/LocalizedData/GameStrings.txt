@@ -1,0 +1,4 @@
+﻿DocInfo/DescLong=Completely devoid of any description whatsoever.
+DocInfo/DescShort=Any
+DocInfo/Name=Just Another StarCraft II Mod
+Param/Value/lib_E8FDC292_59BC7F69=Unsupported Bank Type

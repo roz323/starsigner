@@ -1,0 +1,10 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: StarSigner
+//--------------------------------------------------------------------------------------------------
+// Function Declarations
+void libE8FDC292_gf_SignBank (bank lp_bank);
+bool libE8FDC292_gf_VerifyBank (bank lp_bank);
+string libE8FDC292_gf_ComputeChecksum (bank lp_bank);
+

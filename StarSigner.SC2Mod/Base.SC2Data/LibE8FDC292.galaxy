@@ -1,0 +1,117 @@
+include "TriggerLibs/NativeLib"
+include "Lib132C67C5_h"
+
+include "LibE8FDC292_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: StarSigner
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libE8FDC292_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Functions
+void libE8FDC292_gf_SignBank (bank lp_bank) {
+    // Automatic Variable Declarations
+    // Implementation
+    BankValueSetFromString(lp_bank, "Unsigned", "signature", libE8FDC292_gf_ComputeChecksum(lp_bank));
+}
+
+bool libE8FDC292_gf_VerifyBank (bank lp_bank) {
+    // Variable Declarations
+    int lv_string;
+    int lv_section_number;
+    string lv_section_name;
+    int lv_key;
+    string lv_key_name;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_section_name = "";
+    lv_key_name = "";
+
+    // Implementation
+    return (BankValueGetAsString(BankLastCreated(), "Unsigned", "signature") == libE8FDC292_gf_ComputeChecksum(lp_bank));
+}
+
+string libE8FDC292_gf_ComputeChecksum (bank lp_bank) {
+    // Variable Declarations
+    int lv_string;
+    int lv_section_number;
+    string lv_section_name;
+    int lv_key;
+    string lv_key_name;
+
+    // Automatic Variable Declarations
+    int auto26EEA46E_ae;
+    const int auto26EEA46E_ai = 1;
+    int auto584C9BB4_ae;
+    const int auto584C9BB4_ai = 1;
+
+    // Variable Initialization
+    lv_section_name = "";
+    lv_key_name = "";
+
+    // Implementation
+    lib132C67C5_gf_InitializeHashInput();
+    lib132C67C5_gf_AddStringToHashInput("");
+    lib132C67C5_gf_AddStringToHashInput("");
+    lib132C67C5_gf_AddStringToHashInput("");
+    auto26EEA46E_ae = (BankSectionCount(lp_bank) - 1);
+    lv_section_number = 0;
+    for ( ; ( (auto26EEA46E_ai >= 0 && lv_section_number <= auto26EEA46E_ae) || (auto26EEA46E_ai < 0 && lv_section_number >= auto26EEA46E_ae) ) ; lv_section_number += auto26EEA46E_ai ) {
+        lv_section_name = BankSectionName(lp_bank, lv_section_number);
+        if ((lv_section_name == "Unsigned")) {
+        }
+        else {
+            auto584C9BB4_ae = (BankKeyCount(lp_bank, lv_section_name) - 1);
+            lv_key = 0;
+            for ( ; ( (auto584C9BB4_ai >= 0 && lv_key <= auto584C9BB4_ae) || (auto584C9BB4_ai < 0 && lv_key >= auto584C9BB4_ae) ) ; lv_key += auto584C9BB4_ai ) {
+                lv_key_name = BankKeyName(lp_bank, lv_section_name, lv_key);
+                lib132C67C5_gf_AddStringToHashInput(lv_section_name);
+                lib132C67C5_gf_AddStringToHashInput(",");
+                lib132C67C5_gf_AddStringToHashInput(lv_key_name);
+                lib132C67C5_gf_AddStringToHashInput(",");
+                if ((BankValueIsType(lp_bank, lv_section_name, lv_key_name, c_bankTypeString) == true)) {
+                    lib132C67C5_gf_AddStringToHashInput(BankValueGetAsString(lp_bank, lv_section_name, lv_key_name));
+                }
+                else if ((BankValueIsType(lp_bank, lv_section_name, lv_key_name, c_bankTypeInt) == true)) {
+                    lib132C67C5_gf_AddIntegerToHashInput(BankValueGetAsInt(lp_bank, lv_section_name, lv_key_name));
+                }
+                else if ((BankValueIsType(lp_bank, lv_section_name, lv_key_name, c_bankTypePoint) == true)) {
+                    lib132C67C5_gf_AddStringToHashInput(libNtve_gf_ConvertPointToString(BankValueGetAsPoint(lp_bank, lv_section_name, lv_key_name)));
+                }
+                else if ((BankValueIsType(lp_bank, lv_section_name, lv_key_name, c_bankTypeFixed) == true)) {
+                    lib132C67C5_gf_AddRealToHashInput(BankValueGetAsFixed(lp_bank, lv_section_name, lv_key_name));
+                }
+                else if ((BankValueIsType(lp_bank, lv_section_name, lv_key_name, c_bankTypeFlag) == true)) {
+                    lib132C67C5_gf_AddBooleanToHashInput(BankValueGetAsFlag(lp_bank, lv_section_name, lv_key_name));
+                }
+                else if ((BankValueIsType(lp_bank, lv_section_name, lv_key_name, c_bankTypeUnit) == true)) {
+                    TriggerDebugOutput(1, StringExternal("Param/Value/lib_E8FDC292_59BC7F69"), true);
+                }
+                lib132C67C5_gf_AddStringToHashInput("\\n");
+            }
+        }
+    }
+    return lib132C67C5_gf_GenerateSHA256HashCode();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libE8FDC292_InitLib_completed = false;
+
+void libE8FDC292_InitLib () {
+    if (libE8FDC292_InitLib_completed) {
+        return;
+    }
+
+    libE8FDC292_InitLib_completed = true;
+
+    libE8FDC292_InitLibraries();
+}
+
+include "Lib132C67C5"
+

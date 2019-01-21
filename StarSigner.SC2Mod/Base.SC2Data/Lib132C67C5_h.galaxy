@@ -1,0 +1,18 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: MD5_Hash
+//--------------------------------------------------------------------------------------------------
+// Function Declarations
+void lib132C67C5_gf_InitializeHashInput ();
+void lib132C67C5_gf_AddBooleanToHashInput (bool lp_boolean);
+void lib132C67C5_gf_AddByteToHashInput (byte lp_byte);
+void lib132C67C5_gf_AddBytesToHashInput (byte lp_byte, int lp_amount);
+void lib132C67C5_gf_AddIntegerToHashInput (int lp_integer);
+void lib132C67C5_gf_AddIntegersToHashInput (int lp_integer, int lp_amount);
+void lib132C67C5_gf_AddRealToHashInput (fixed lp_real);
+void lib132C67C5_gf_AddStringToHashInput (string lp_string);
+void lib132C67C5_gf_AddUnitToHashInput (unit lp_unit);
+string lib132C67C5_gf_GenerateMD5HashCode ();
+string lib132C67C5_gf_GenerateSHA256HashCode ();
+
