@@ -1,0 +1,13 @@
+Example use:
+
+Always sign before saving:
+
+SignBank(bank);
+SaveBank(bank);
+
+
+Verify both signatures together:
+
+if (((BankVerify(bank) && (VerifyBank(bank))) {
+...
+}
